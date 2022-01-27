@@ -1,0 +1,18 @@
+ We show that the low-frequency components of the target function are often more important during the training of deep neural networks.
+ Small initialization leads to good generalization ability of DNNs while preserving the DNN’s ability to fit any function.
+ These results are further confirmed by experiments of DNNs fitting the following datasets, that is, natural images, one-dimensional functions and MNIST dataset.
+
+ The loss function is the sum of the loss of each frequency.
+ The magnitude of DNN parameters only changes slightly during training.
+
+
+ We analyze the DNN training process through Fourier analysis. Our theoretical framework explains the training process when the DNN is ﬁtting low-frequency dominant functions or high-frequency dominant functions. Based on the understanding of the training process, we explain why DNN with small initialization can achieve a good generalization ability. Our theoretical result shows that the initialization of weights rather than biasterms mainly determines the DNN training and generalization. We exemplify our result through natural images and MNIST dataset. These analyses are not constrained to low-dimensional functions. Next, we will discuss the relation of our results with other studies and some limitation of these analyses.
+ We can explain the empirical observations of the convergence of DNNs on real data by
+
+
+ If you want to understand the math behind the paper, read the paper. If you want to understand the math behind the paper and you don't want to read the paper, read the appendix. If you want to understand the math behind the paper, read the paper, and you don't want to read the paper, read the appendix, and don't read the rest of this post.
+ We can use the same tricks to prove the theorem for the tanh activation function.
+
+ The DNN can learn to ﬁt a function even if the number of training samples is small.
+
+
