@@ -68,7 +68,7 @@ def show_summary(paperContent):
     :return:
     """
     tldr_tag = "\n tl;dr:"
-    openai.api_key = "API-KEY"
+    openai.api_key = "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"
     summary = ""
     with open('summary.txt', 'w') as the_file:
         for page in paperContent:

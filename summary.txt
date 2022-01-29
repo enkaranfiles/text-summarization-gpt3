@@ -1,0 +1,17 @@
+
+
+ The loss function is the Fourier transform of the target function.
+
+ The analysis of the gradient of the loss function of a DNN is insensitive to the
+
+
+ The DNN is a function approximator. The weights are initialized by a Gaussian distribution. The weights are initialized by a Gaussian distribution. The weights are initialized by a Gaussian distribution. The weights are initialized by a Gaussian distribution. The weights are initialized by a Gaussian distribution. The weights are initialized by a Gaussian distribution. The weights are initialized by a Gaussian distribution. The weights are initialized by a Gaussian distribution. The weights are initialized by a Gaussian distribution. The weights are initialized by a Gaussian distribution. The weights are initialized by a Gaussian distribution. The weights are initialized by a Gaussian distribution. The weights are initialized by a Gaussian distribution.
+
+
+ The spectral norm of the weights is not a good measure of the quality of the network.
+ The proof is in the appendix.
+
+
+ The DNN converges faster for high-frequency dominant functions, and it is due to the
+ Theoretical guarantees for training deep neural networks
+ Deep Learning is a new approach to Machine Learning that has enjoyed much success in the past few years. It is based on the idea of hierarchical models, where lower level features are combined to form higher level features. The higher level features are then used to build even higher level features, and so on. This is a very intuitive way of building models, and it has proven to be very successful.
