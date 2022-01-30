@@ -60,20 +60,21 @@ def show_summary_save_file(paperContent):
             pdf.cell(50,5,txt=text,ln = 1, align="C")
     pdf.output("summary.pdf")
 
-@app.route('/gpt_summary', methods=['GET'])
-def show_summary(paperContent):
+def show_summary_local_test(original_file, engine_name):
     """
-    -for api call
+    -for local test
     :param paperContent:
     :return:
     """
+    paperContent = pdfplumber.open("data/{}".format(original_file)).pages
+
     tldr_tag = "\n tl;dr:"
-    openai.api_key = "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"
+    openai.api_key = "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"
     summary = ""
     with open('summary.txt', 'w') as the_file:
         for page in paperContent:
             text = page.extract_text() + tldr_tag
-            response = openai.Completion.create(engine="davinci", prompt=text, temperature=0.3,
+            response = openai.Completion.create(engine=engine_name, prompt=text, temperature=0.3,
                                                 max_tokens=140,
                                                 top_p=1,
                                                 frequency_penalty=0,
@@ -81,7 +82,38 @@ def show_summary(paperContent):
                                                 stop=["\n"]
                                                 )
             text = response["choices"][0]["text"].encode('latin-1', 'replace').decode('latin-1')
-            summary = text + "\n"
+            summary = summary + text + "\n"
+    print(summary)
+    return summary
+
+@app.route('/gpt_summary', methods=['GET'])
+def show_summary():
+    """
+    -for api call
+    :param paperContent:
+    :return:
+    """
+    original_file = request.args.get("original_file")
+    engine_name = request.args.get("engine")
+
+    paperContent = pdfplumber.open("data/{}".format(original_file)).pages
+
+    tldr_tag = "\n tl;dr:"
+    openai.api_key = "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"
+    summary = ""
+    with open('summary.txt', 'w') as the_file:
+        for page in paperContent:
+            text = page.extract_text() + tldr_tag
+            response = openai.Completion.create(engine=engine_name, prompt=text, temperature=0.3,
+                                                max_tokens=140,
+                                                top_p=1,
+                                                frequency_penalty=0,
+                                                presence_penalty=0,
+                                                stop=["\n"]
+                                                )
+            text = response["choices"][0]["text"].encode('latin-1', 'replace').decode('latin-1')
+            summary = summary + text + "\n"
+    print(summary)
     return summary
 
 @app.route('/summary', methods=['GET'])
@@ -97,5 +129,3 @@ def show_one_summary():
 
 if __name__ == '__main__':
     app.run()
-
-#print(show_one_summary("rondom_text.pdf"))
