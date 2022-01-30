@@ -113,8 +113,12 @@ def show_summary():
                                                 )
             text = response["choices"][0]["text"].encode('latin-1', 'replace').decode('latin-1')
             summary = summary + text + "\n"
-    print(summary)
-    return summary
+
+    item = {
+        "file_name": original_file,
+        "summary_text": summary
+    }
+    return json.dumps(item)
 
 @app.route('/summary', methods=['GET'])
 def show_one_summary():
