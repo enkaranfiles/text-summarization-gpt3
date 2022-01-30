@@ -95,11 +95,11 @@ def show_summary():
     """
     original_file = request.args.get("original_file")
     engine_name = request.args.get("engine")
-
+    api_key = request.args.get("api_key")
     paperContent = pdfplumber.open("data/{}".format(original_file)).pages
 
     tldr_tag = "\n tl;dr:"
-    openai.api_key = "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"
+    openai.api_key = api_key
     summary = ""
     with open('summary.txt', 'w') as the_file:
         for page in paperContent:
