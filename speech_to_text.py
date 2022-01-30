@@ -1,13 +1,10 @@
 import io
 import os
-# Imports the Google Cloud client library
 from google.cloud import speech
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r'C:\Users\Pc\Desktop\google-key\speechtotext-339819-3cd6af1fffe3.json'
 
-# Instantiates a client
 client = speech.SpeechClient()
-# The name of the audio file to transcribe
 file_name = os.path.join(
     os.path.dirname(__file__),
     'sound-data',
@@ -23,7 +20,6 @@ config = speech.RecognitionConfig(
     sample_rate_hertz=16000,
     language_code='en-US')
 
-# Detects speech in the audio file
 response = client.recognize(config=config, audio=audio)
 
 for result in response.results:
